@@ -5,10 +5,20 @@ import { Pool } from "pg";
 // importing from the custom path you found!
 import { PrismaClient } from "@prisma/client";
 
-const connectionString = `${process.env.DATABASE_URL}`;
+const rawUrl = process.env.DATABASE_URL ?? "";
 
-// Initialize the pg pool and the Prisma adapter
-const pool = new Pool({ connectionString });
+// Strip any existing sslmode param from the URL to prevent the pg v8
+// deprecation warning about ambiguous sslmode values (prefer/require
+// being treated as verify-full). We handle SSL explicitly in Pool config.
+const url = new URL(rawUrl);
+url.searchParams.delete("sslmode");
+const connectionString = url.toString();
+
+// Initialize the pg pool with explicit SSL configuration
+const pool = new Pool({
+  connectionString,
+  ssl: true,
+});
 const adapter = new PrismaPg(pool);
 
 // The Next.js safety wrapper
