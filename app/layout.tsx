@@ -20,9 +20,19 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "AI Tool Hub",
-  description: "A collection of AI tools built with Next.js and Prisma.",
-};
+  title: 'AI Tool Discovery | Find the Perfect AI Tools',
+  description: 'A curated directory of the best AI tools for coding, design, video editing, and productivity. Discover and bookmark your favorites.',
+  openGraph: {
+    title: 'AI Tool Discovery',
+    description: 'Find the perfect AI tools to optimize your workflow.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Tool Discovery',
+    description: 'Discover the best AI tools to optimize your workflow.',
+  }
+}
 
 export default function RootLayout({
   children,
