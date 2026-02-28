@@ -3,17 +3,20 @@ import { auth } from "@/auth"
 import { prisma } from "../lib/prisma"
 
 export default async function HomePage() {
-  const session = await auth()
-  
-  // 1. Fetch saved tool IDs if user is logged in
   let savedToolsId: string[] = []
-  
-  if (session?.user?.id) {
-    const saved = await prisma.savedTool.findMany({
-      where: { userId: session.user.id },
-      select: { toolId: true }
-    })
-    savedToolsId = saved.map(s => s.toolId)
+
+  try {
+    const session = await auth()
+
+    if (session?.user?.id) {
+      const saved = await prisma.savedTool.findMany({
+        where: { userId: session.user.id },
+        select: { toolId: true }
+      })
+      savedToolsId = saved.map(s => s.toolId)
+    }
+  } catch (error) {
+    console.error("HomePage: error during data fetch:", error)
   }
 
   return (
@@ -28,7 +31,6 @@ export default async function HomePage() {
         </p>
       </div>
 
-      {/* Pass the fetched IDs (now defined!) to ToolDiscovery */}
       <ToolDiscovery initialSavedIds={savedToolsId} />
     </main>
   )

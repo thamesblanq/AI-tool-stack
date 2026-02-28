@@ -11,8 +11,6 @@ export default async function middleware(req: NextRequest) {
     return await authMiddleware(req);
   } catch (error) {
     console.error('Middleware auth error:', error);
-    // If middleware crashes (e.g. missing AUTH_SECRET), allow the request through
-    // instead of silently returning a 404.
     return NextResponse.next();
   }
 }
