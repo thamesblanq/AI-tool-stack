@@ -1,8 +1,8 @@
 import { auth } from "@/auth";
-import { prisma } from "../../lib/prisma"; // Make sure this path is correct for your setup
+import { prisma } from "../lib/prisma"; // Make sure this path is correct for your setup
 import { aiTools } from "@/app/lib/data"; // <--- ADDED aiTools HERE
 import { redirect } from "next/navigation";
-import BookmarksClient from "../../components/BookmarksClient";
+import BookmarksClient from "../components/BookmarksClient";
 
 export default async function BookmarksPage() {
   const session = await auth();

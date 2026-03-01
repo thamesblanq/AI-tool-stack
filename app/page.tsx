@@ -1,6 +1,6 @@
-import ToolDiscovery from "../components/ToolDiscovery"
+import ToolDiscovery from "./components/ToolDiscovery"
 import { auth } from "@/auth"
-import { prisma } from "../lib/prisma"
+import { prisma } from "./lib/prisma"
 
 export default async function HomePage() {
   const session = await auth()

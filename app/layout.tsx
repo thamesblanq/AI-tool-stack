@@ -1,8 +1,8 @@
-// app/(main)/layout.tsx
-import NavBar from "../components/NavBar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Roboto } from "next/font/google";
-import "../globals.css";
+import "./globals.css";
+import NavWrapper from "./components/NavWrapper";
+import NavBar from "./components/NavBar";
 import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
@@ -46,7 +46,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}
       >
-        <NavBar />
+        <NavWrapper>
+          <NavBar />
+        </NavWrapper>
         {children}
         <Analytics />
       </body>

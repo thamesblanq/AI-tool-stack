@@ -1,5 +1,5 @@
 import { Sparkles } from "lucide-react"
-import SignupForm from "../../components/SignUpForm"
+import LoginForm from "../components/LoginForm"
 
 const page = () => {
   return (
@@ -10,12 +10,12 @@ const page = () => {
                     <Sparkles className="w-8 h-8 text-[#0a0a0f]"/>
                 </div>
                 <div>
-                    <h1 className="text-3xl mb-2 font-semibold">Create Account</h1>
-                    <p className="text-[#94949f]">Join us to discover the best AI tools.</p>
+                    <h1 className="text-3xl mb-2 font-semibold">Welcome Back</h1>
+                    <p className="text-[#94949f]">Sign in to discover AI tools for your workflow</p>
                 </div>
 
             </div>
-            <SignupForm />
+            <LoginForm />
         </div>
     </main>
   )

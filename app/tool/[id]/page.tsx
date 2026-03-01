@@ -1,8 +1,8 @@
-import { aiTools } from "../../../lib/data";
+import { aiTools } from "../../lib/data";
 import { notFound } from "next/navigation";
 import { auth } from "@/auth";
-import { prisma } from "../../../lib/prisma";
-import ToolDetailClient from "../../../components/ToolDetailClient";
+import { prisma } from "../../lib/prisma"
+import ToolDetailClient from "../../components/ToolDetailClient"
 
 export default async function ToolPage({ params }: { params: { id: string } }) {
   const { id } = await params;
