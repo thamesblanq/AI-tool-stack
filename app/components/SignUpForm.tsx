@@ -8,7 +8,7 @@ const SignupForm = () => {
 const [state, action, pending] = useActionState(signup, undefined)
 
   return (
-    <div className="bg-[#14141f] border border-[#2a2a3a] rounded-2xl p-8">
+    <div className="bg-[#14141f] border border-[#2a2a3a] rounded-2xl p-8 mb-8">
         <form action={action} className="space-y-6">
 
             <div className="space-y-2">
@@ -48,6 +48,7 @@ const [state, action, pending] = useActionState(signup, undefined)
                 className="w-full bg-[#1e1e2e] border border-[#2a2a3a] rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff]"
                 />
             </div>
+            <p className="text-sm text-[#94949f]">Password must contain at least 8 characters, including a letter, a number and special character.</p>
             {state?.errors?.password && (
                 <div>
                 <p>Password must:</p>
