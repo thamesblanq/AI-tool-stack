@@ -86,8 +86,5 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 ***
 
-This frames it perfectly as a feature-rich, full-stack application. It highlights the main value proposition (finding and saving AI tools + YouTube integration) while still letting recruiters or other developers know that you didn't cut any corners on the backend auth and database architecture. 
-
-Does this capture the true scope of your project?
 
 ```
