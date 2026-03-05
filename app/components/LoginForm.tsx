@@ -11,38 +11,47 @@ interface LoginState {
 }
 
 const LoginForm = () => {
-const [state, action, pending] = useActionState<LoginState | undefined, FormData>(login, undefined)
+  const [state, action, pending] = useActionState<LoginState | undefined, FormData>(login, undefined)
 
   return (
     <div className="bg-[#14141f] border border-[#2a2a3a] rounded-2xl p-8 mb-4">
         <form action={action} className="space-y-6">
             
             <div className="space-y-2">
-                <label htmlFor="email" className="font-medium">Email</label>
+                <label htmlFor="email" className="font-medium text-white">Email</label>
                 <input 
-                id="email"
-                type="text" 
-                name="email"
-                placeholder="youremail@example.com"
-                required
-                className="w-full bg-[#1e1e2e] border border-[#2a2a3a] rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff]"
+                  id="email"
+                  type="text" 
+                  name="email"
+                  placeholder="youremail@example.com"
+                  required
+                  className="w-full bg-[#1e1e2e] border border-[#2a2a3a] rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff]"
                 />
             </div>
-            {state && 'errors' in state && state.errors?.email && <p className="text-red-500 text-sm">{state.errors.email}</p>}
+            {state && 'errors' in state && state.errors?.email && (
+                <p className="text-red-500 text-sm">{state.errors.email}</p>
+            )}
 
             <div className="space-y-2">
-                <label htmlFor="password" className="font-medium">Password</label>
+                {/* NEW: Flex container to put Label on the left and Link on the right */}
+                <div className="flex items-center justify-between">
+                    <label htmlFor="password" className="font-medium text-white">Password</label>
+                    <Link href="/forgot-password" className="text-sm text-[#00d9ff] hover:underline hover:text-[#00b8d4] transition-colors">
+                        Forgot password?
+                    </Link>
+                </div>
                 <input 
-                id="password"
-                type="password"  
-                name="password"
-                placeholder="********"
-                required
-                className="w-full bg-[#1e1e2e] border border-[#2a2a3a] rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff]"
+                  id="password"
+                  type="password"  
+                  name="password"
+                  placeholder="********"
+                  required
+                  className="w-full bg-[#1e1e2e] border border-[#2a2a3a] rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff]"
                 />
             </div>
-            <p className="text-sm text-[#94949f]">Password must contain at least 8 characters, including a letter, a number and special character.</p>
-            {state?.message && <p className="text-red-500 text-sm font-medium text-center">{state.message}</p>}
+            {state?.message && (
+                <p className="text-red-500 text-sm font-medium text-center">{state.message}</p>
+            )}
 
             <button 
               type="submit" 
@@ -53,9 +62,10 @@ const [state, action, pending] = useActionState<LoginState | undefined, FormData
             </button>
 
             <div className="text-center mt-6">
-                <p className="text-sm text-[#94949f]">Don&apos;t have an account? <Link href="/signup" className="text-[#00d9ff] hover:underline">Sign up</Link></p>
+                <p className="text-sm text-[#94949f]">
+                    Don&apos;t have an account? <Link href="/signup" className="text-[#00d9ff] hover:underline">Sign up</Link>
+                </p>
             </div>
-
 
         </form>
     </div>
